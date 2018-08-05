@@ -17,12 +17,12 @@ public final class Argon2 {
         this.hashLength = hashLength;
     }
 
-    public String argon2i(String password, String salt) {
-        return new String(argon2dInternal(iterations, memory, parallelism, password, salt, hashLength));
+    public byte[] argon2i(String password, String salt) {
+        return argon2iInternal(iterations, memory, parallelism, password, salt, hashLength);
     }
 
-    public String argon2d(String password, String salt) {
-        return new String(argon2dInternal(iterations, memory, parallelism, password, salt, hashLength));
+    public byte[] argon2d(String password, String salt) {
+        return argon2dInternal(iterations, memory, parallelism, password, salt, hashLength);
     }
 
     private native byte[] argon2iInternal(int iterations, int memory, int parallelism, String password, String salt, int hashLength);

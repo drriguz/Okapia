@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
         TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
 
-        Argon2 argon2 = new Argon2(1, 16, 1, 32);
     }
 
     /**
