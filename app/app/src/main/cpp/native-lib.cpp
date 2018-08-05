@@ -2,7 +2,6 @@
 #include <string>
 
 extern "C" JNIEXPORT jstring
-
 JNICALL
 Java_com_riguz_okapia_MainActivity_stringFromJNI(
         JNIEnv *env,
