@@ -55,7 +55,7 @@ public class SplashActivity extends AppCompatActivity {
             super.onPostExecute(aBoolean);
             progressBar.setVisibility(View.INVISIBLE);
             Intent intent = new Intent();
-            intent.setClass(SplashActivity.this, MainActivity.class);
+            intent.setClass(SplashActivity.this, UnlockActivity.class);
             startActivity(intent);
         }
 
