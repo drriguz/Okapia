@@ -40,9 +40,9 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected Boolean doInBackground(Void... voids) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
                 publishProgress("Checing data...");
-                Thread.sleep(2000);
+                Thread.sleep(20);
                 publishProgress("Done...");
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -55,7 +55,7 @@ public class SplashActivity extends AppCompatActivity {
             super.onPostExecute(aBoolean);
             progressBar.setVisibility(View.INVISIBLE);
             Intent intent = new Intent();
-            intent.setClass(SplashActivity.this, UnlockActivity.class);
+            intent.setClass(SplashActivity.this, MainActivity.class);
             startActivity(intent);
         }
 
