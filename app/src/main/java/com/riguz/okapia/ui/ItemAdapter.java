@@ -1,46 +1,60 @@
 package com.riguz.okapia.ui;
 
+import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.riguz.okapia.R;
+import com.riguz.okapia.model.SecretItem;
+
+import java.util.List;
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemViewHolder> {
-    private String[] dataset;
+    private final List<SecretItem> items;
+    private final Resources resources;
 
-    public ItemAdapter(String[] dataset) {
-        this.dataset = dataset;
+    public ItemAdapter(List<SecretItem> dataset, Resources resources) {
+        this.items = dataset;
+        this.resources = resources;
     }
 
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View v = (View) LayoutInflater.from(parent.getContext())
+        View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.layout_item, parent, false);
-        ItemViewHolder holder = new ItemViewHolder(v);
-        return holder;
+        return new ItemViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder itemViewHolder, int i) {
-        itemViewHolder.textView.setText(dataset[i]);
+        SecretItem item = items.get(i);
+        itemViewHolder.textViewTitle.setText(item.getTitle());
+        itemViewHolder.textViewSubTitle.setText(item.getSubTitle());
+        itemViewHolder.imageViewIcon.setImageDrawable(resources.getDrawable(item.getIconId()));
+
     }
 
     @Override
     public int getItemCount() {
-        return dataset.length;
+        return items.size();
     }
 
-    public static class ItemViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+    static class ItemViewHolder extends RecyclerView.ViewHolder {
+        private TextView textViewTitle;
+        private TextView textViewSubTitle;
+        private ImageView imageViewIcon;
 
-        public ItemViewHolder(View container) {
+        ItemViewHolder(View container) {
             super(container);
-            this.textView = container.findViewById(R.id.textViewItem);
+            this.textViewTitle = container.findViewById(R.id.textViewTitle);
+            this.textViewSubTitle = container.findViewById(R.id.textViewSubTitle);
+            this.imageViewIcon = container.findViewById(R.id.imageViewIcon);
         }
     }
 }
